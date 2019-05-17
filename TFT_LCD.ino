@@ -34,8 +34,21 @@ void loop()
 void teste_texto(uint16_t color)
 {
   tft.fillScreen(BLACK);
+  tft.fillRoundRect(5, 15, 312, 100, 5, ORANGE);
   tft.drawRoundRect(5, 15, 312, 100, 5, WHITE);
-  tft.setTextColor(YELLOW);
+  tft.setTextColor(BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(13, 31);
+  tft.println("  Aproxime seu ");
+  tft.setCursor(13, 71);
+  tft.println("cartao do leitor");
+  tft.setTextColor(BLACK);
+  tft.setTextSize(3);
+  tft.setCursor(14, 32);
+  tft.println("  Aproxime seu ");
+  tft.setCursor(14, 72);
+  tft.println("cartao do leitor");
+  tft.setTextColor(WHITE);
   tft.setTextSize(3);
   tft.setCursor(15, 30);
   tft.println("  Aproxime seu ");
