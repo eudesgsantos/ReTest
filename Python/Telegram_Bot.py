@@ -1,9 +1,14 @@
+import time
 import telebot
+import logging
 import smtplib, ssl
 from telebot import types
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 bot = telebot.TeleBot('830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY')
+
+global respo
+number = 0
 
 channelID = "-1001225815995"
 
@@ -12,18 +17,14 @@ bot_id = 830353241
 carlos = 871256317
 will =  628657757
 
-user = bot.get_me()
-print(user)
-
-problema = input('Qual o seu problema? ')
-lugar = input('Aonde esta o problema? ')
+problema = input("Qual o seu problema? ")
+lugar = input("Aonde esta o problema? ")
+respo = problema +' no(a) '+ lugar
 email = input('Digite as iniciais do seu nome ')
 pedido = problema+' no(a)'+lugar+' quem vai resolver?'
 emailT = email+'@cesar.school'
 print(emailT)
 cheia = ''
-pedCar = "Carlos vai resolver o chamado do(a) "+problema+" no(a) "+lugar
-pedWill = "Will vai resolver o chamado do(a) "+problema+" no(a) "+lugar
 
 
 markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
@@ -32,31 +33,32 @@ markup.add(itembta)
 bot.send_message(-1001225815995,pedido,reply_markup=markup)
 
 def enviarEmail():
+    global number
+    if number == 2:
+        msg = '{} esta indo resolver "{}", acompanhe seu email para mais informes do andamento do problema'.format(cheia,respo)
+    if number == 1:
+        msg = '{} resolveu {}, obrigado por usar o PiNG, contamos com voce para os proximos reportes'.format(cheia,respo)
     port = 465
     password = 'arduinopython'
     sender_email = 'retestping@gmail.com'
     receiver_email = emailT
 
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = "Feedback P!NG"
     message ["From"] = sender_email
     message ["To"] = receiver_email
-    print("cheia é", cheia)
     text = """\
-    {} esta indo resolver seu problema,acompanhe seu email para mais informes do andamento do problema
-    """.format(cheia)
+    {}
+    """.format(msg)
     html = """\
     <html>
         <body>
-            <p>{} esta indo resolver seu problema, acompanhe seu email para mais informes do andamento do problema
-
-
+            <p>{}
             </p>
-        
+
         </body>
     </html>
-
-    """.format(cheia)
+    """.format(msg)
     part1 = MIMEText(text,"plain")
     part2 = MIMEText(html,"html")
     message.attach(part1)
@@ -70,22 +72,37 @@ def enviarEmail():
 
 def handle_messages(messages):
     global cheia
+    global number
+    global problema
+    global lugar
     for message in messages:
-        if "Carlos" in str(message):
-            cheia = 'Carlos'
-            markup = types.ReplyKeyboardRemove(selective=True)
-            bot.send_message(-1001225815995,pedCar,reply_markup=markup)
-            print(cheia)
+        kin = str(message).split(',')
+        print(kin)
+        mens = kin[-1].split(': ')
+        print(mens[1])
+        name = kin[4].split(': ')
+        print(name[1])
+        sup = name[1]
+        cheia = sup
+        if mens[1] == "'Eu vou'}}":
+            pedsup = sup+" vai resolver o chamado do(a) "+problema+" no(a) "+lugar
+            number = 2
             enviarEmail()
-        if "Will" in str(message):
-            cheia = 'Will'
-            markup = types.ReplyKeyboardRemove(selective=True)
-            bot.send_message(-1001225815995,pedWill,reply_markup=markup)
-            print(cheia)
+            markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
+            itembta = types.KeyboardButton('Feito')
+            markup.add(itembta)
+            bot.send_message(-1001225815995,pedsup,reply_markup=markup)
+        if mens[1] == "'Feito'}}":
+            relsup = sup+" resolveu o problema!"
+            number = 1
+            bot.send_message(-1001225815995,relsup)
             enviarEmail()
-
 bot.set_update_listener(handle_messages)
-bot.polling()
-
-updates = bot.get_updates(1234,100,20)
-bot.polling(none_stop=False, interval=0, timeout=20)
+time.sleep(1)
+bot.infinity_polling(True)
+while True:
+    try:
+        bot.polling(none_stop=True,interval=0,timeout=123)
+    except Exception as e:
+        logger.error(e)
+        time.sleep(15)
