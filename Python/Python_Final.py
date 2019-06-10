@@ -49,9 +49,8 @@ def handle_messages(messages):
             enviarEmail()
 
 
-def fazPoll(var1, var2):
+def fazPoll():
     bot.polling()
-    print(var1, var2)
 
 
 def enviarEmail():
@@ -105,7 +104,7 @@ will = 628657757
 
 strokes = []
 
-_thread.start_new_thread(fazPoll, ("chamei", "o coisa"))
+_thread.start_new_thread(fazPoll, ())
 
 while True:
     if(DEBUG):
