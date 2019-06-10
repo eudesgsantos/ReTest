@@ -11,12 +11,11 @@ from telebot import types
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-DEBUG = False
+DEBUG = True
 
 if(not DEBUG):
     Arduinoserial = serial.Serial('COM14')
-bot = telebot.TeleBot(
-    '830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY', threaded=True)
+bot = telebot.TeleBot('830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY', threaded=True)
 
 global respo
 number = 0
@@ -29,13 +28,15 @@ def handle_messages(messages):
     global lugar
     for message in messages:
         kin = str(message).split(',')
+        idmens = kin[1].split(': ')
+        prot = idmens[1]
+        print(prot)
         mens = kin[-1].split(': ')
         name = kin[4].split(': ')
         sup = name[1]
         cheia = sup
         if mens[1] == "'Eu vou'}}":
-            pedsup = sup + \
-                " vai resolver o chamado do(a) "+problema+" no(a) "+lugar
+            pedsup = sup + " vai resolver o chamado do(a) "+problema+" no(a) "+lugar
             number = 2
             enviarEmail()
             markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
@@ -43,7 +44,7 @@ def handle_messages(messages):
             markup.add(itembta)
             bot.send_message(-1001225815995, pedsup, reply_markup=markup)
         if mens[1] == "'Feito'}}":
-            relsup = sup+" resolveu o problema!"
+            relsup = sup + " resolveu o problema!"
             number = 1
             bot.send_message(-1001225815995, relsup)
             enviarEmail()
@@ -80,7 +81,6 @@ def enviarEmail():
         <body>
             <p>{}
             </p>
-
         </body>
     </html>
     """.format(msg)
@@ -175,4 +175,3 @@ while True:
         del strokes[0]
         bot.set_update_listener(handle_messages)
         print('sai do bot')
-        time.sleep(1)
