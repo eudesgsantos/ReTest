@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<meta charset="utf-8">
+		<title>P!NG</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/grid.css">
+		<style type="text/css">
+		/* CSS */
+			body {margin: 0;} 
+			
+			.fotor { /*plano de fundo*/
+			   display: block;
+			    width: 100vw;
+			    height: 100vh;
+			    padding: 0;
+			    text-align: center;
+			    color: white;
+			    background: url(foto.png) no-repeat center top fixed;
+			    background-color: #fff;
+			    -webkit-background-size: cover;
+			    -moz-background-size: cover;
+			    background-size: cover;
+			    -o-background-size: cover;
+			}
+
+			.caixa{ /* container - retângulo branco */
+			  width:  450.4px;
+			  height: 443.9px;
+			  border-radius: 12px;
+			  background-color: #fff;
+			  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.16);
+			  position: absolute; 
+			  left: 460px; 
+			  top: 120px; 
+
+			}
+
+			.imagem{ /* logo */
+			  text-align: center;
+			  margin-top: 50px;
+			}
+
+			h2{ /* Título - local de report */
+				text-align: center;
+				margin-top: 45px;
+				margin-bottom: 30px;
+				font-family: 'Roboto', sans-serif;
+				font-size: 20px;
+			    font-weight: 500;
+			    font-style: normal;
+			    font-stretch: normal;
+			    line-height: 1.2;
+			 	color: #707070;
+				}
+
+			#pf { /* lista suspensa - local */
+			   -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+			   -moz-appearance: none; /* Remove estilo padrão do FireFox */
+			   appearance: none; /* Remove estilo padrão do FireFox*/
+			   width: 388px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+			   height: 44px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+			   background: url(img/seta-para-baixo.png) no-repeat 347px;  /* Imagem de fundo (Seta*/
+			   background-size: 18px; 
+			   border-radius: 40px;
+			   font-size: 14px;
+			   border-radius: 30px;
+			   border: solid 3px #cecece;
+			   padding: 10px 20px 10px 20px;
+			   color: #707070;
+			   left: 45px;
+			   top: 10px;
+			   text-align: center;
+			   margin-top: -30px;
+			   font-family: 'Roboto', sans-serif;
+			   color: #707070;
+			}
+			 
+			#pf:hover { /* animação - feedback de botão */
+			border-color: #FDB514; 
+			color:#707070;
+			}
+
+			.title2 { /* label da lista suspensa */
+				text-align: left;
+				margin-left: 50px;
+				margin-top: 27.4px;
+			  margin-bottom: -6px;
+				font-family: 'Roboto', sans-serif;
+				font-size: 17px;
+				font-weight: 700;
+				color: #707070;
+			}
+
+			.options { /* forms da lista suspensa */
+				text-align: center;
+				margin-top: 20px;
+				margin-bottom: 30px;
+				font-family: 'Roboto', sans-serif;
+				color: #707070;
+				border-radius: 12px;
+			}
+
+			select {outline: none;}/* tira a seleção da lista */
+
+			.especif { /* label da caixa de texto */
+				
+				text-align: left;
+				margin-left: 50px;
+				margin-top: 20px;
+				margin-bottom: 30px;
+				font-family: 'Roboto', sans-serif;
+				font-size: 17px;
+				color: #707070;
+			}
+
+
+			#especifique { /*campo de texto*/
+				
+			   width: 388px; 
+			   height: 44px;
+			   margin-left: 31px;
+				border: 2px;
+				border-style: solid;
+			  border-radius: 40px;
+			  font-size: 14px;
+			  border-radius: 30px;
+			  border: solid 3px #cecece;
+			  left: 45px;
+			  top: 10px;
+			  margin-top: -27px;
+			  font-family: 'Roboto', sans-serif;
+			  color: #707070;
+			  padding-left: 20px;
+			  padding-top: 10px;
+			}
+
+			#especifique:hover { /* animação - feedback botão */
+			  border-color: #FDB514; 
+			  color:#707070;
+			}
+
+			textarea {outline: none;} /* tira seleção do campo de texto*/
+
+			.vai{ /* "botão" reportar */
+			  position: absolute;
+			  -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+			  -moz-appearance: none; /* Remove estilo padrão do FireFox */
+			  appearance: none; /* Remove estilo padrão do FireFox*/
+			  background-position: center;  /*Posição da imagem do background*/
+			  border-radius: 40px;
+			  font-size: 20px;
+			  font-family: Roboto;
+			  padding: 15px 55px 15px 55px;  
+			  margin-top: 50px;
+			  margin-left: 120px;
+			  color: #fff;
+			  background-color:  #FDB514; 
+			}
+
+			.vai:hover { /* animação feedback de botão */
+			 color: #fff;
+			 background-color: #DF9821;
+			}
+
+		</style>
+	</head>
+	<body>
+		<img class="fotor" src="img/foto.png">
+		<div class="caixa">
+				<div class="chama">
+					<h2>CESAR School - Sala 3</h2>
+			    </div>
+				<div class="title2">
+					<h1>Seu problema é:</h1>
+				</div>
+				<div class="options">
+					<select id="pf">
+						<option value="01"select hidden>Ex: projetor</option>
+		  				<option value="02">Ar condicionado não funciona corretamente</option>
+		 				<option value="03">Cadeira quebrada</option>
+						<option value="04">Caixa de som não funciona</option>
+		 				<option value="05">Lâmpada apagada ou piscando</option>
+						<option value="06">Microfone não funciona</option>
+		 				<option value="07">Porta com defeito</option>
+		 				<option value="08">Preciso de um adaptador ou cabo</option>
+		 				<option value="09">Projetor não funciona </option>
+		 				<option value="10">Rede cabeada não funciona</option>
+		 				<option value="11">Rede wifi não funciona</option>
+		 				<option value="12">TV não funciona</option>
+		  				<option value="13">CESAR Tiradentes</option>
+		  				<option value="13">Outros</option>
+					</select>
+				</div>
+				<form action="reportar.php" method="post" name="reportar">
+					<div class="especif" >
+					  <label for="Especifique seu problema">Conte-nos mais</label>
+					</div>
+					<div tabindex="0">
+					<textarea id="especifique" name="especifique" placeholder="Ex: cabo do projetor entortou" ></textarea>
+					</div>
+		  		<a id="va" href="tela3.html" class="vai" type="submit">Reportar</a>
+				</form>
+			</img>
+		</div>
+	</body>
+</html>

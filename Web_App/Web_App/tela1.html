@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<meta charset="utf-8">
+		<title>P!NG</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/grid.css">
+
+		<style type="text/css">
+			body {
+			  background: url(foto.png) center center no-repeat fixed;
+			  -webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
+			}
+
+			.caixa{
+			  width:  450.4px;
+			  height: 443.9px;
+			  border-radius: 12px;
+			  background-color: #fff;
+			  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.16);
+			  position: absolute; 
+			  left: 460px; 
+			  top: 120px; 
+
+			}
+
+			.imagem{
+			  text-align: center;
+			  margin-top: 50px;
+			}
+
+			.titulo1 {
+			  text-align: center;
+			  font-family: Roboto, sans-serif;
+			  font-size: 17px;
+			  color: #707070;
+			  margin-top: 15px;
+			}
+			#pfvr {
+			  -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+			  -moz-appearance: none; /* Remove estilo padrão do FireFox */
+			  appearance: none; /* Remove estilo padrão do FireFox*/
+			  background-position: 300px center;  /*Posição da imagem do background*/
+			  width: 352px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+			  height:55px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+			  background: url(img/seta-para-baixo.png) no-repeat 300px;  /* Imagem de fundo (Seta) */
+			  border-radius: 40px;
+			  font-size: 18px;
+			  font-family: Roboto;
+			  padding: 10px 20px 10px 20px;
+			  border: solid 2.5px #cecece;
+			  color: #707070;
+			  margin-left: 45px;
+			  margin-top: 10px;
+			}
+
+			#pfvr:hover{  
+			  border-color: #FDB514; 
+		      color:#707070;
+			} 
+
+			select {
+			  	outline: none;
+			}
+
+			.btn {
+			  position: absolute;
+			  -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+			  -moz-appearance: none; /* Remove estilo padrão do FireFox */
+			  appearance: none; /* Remove estilo padrão do FireFox*/
+			  background-position: 40px center;  /*Posição da imagem do background*/
+			  background: url(img/seta-para-baixo.png) no-repeat 347px;  /* Imagem de fundo (Seta*/
+   			  background-size: 5px; 
+			  width: 352px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+			  height: 55px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+			  border-radius: 40px;
+			  font-size: 20px;
+			  font-family: Roboto;
+			  padding: 15px 10px 10px 50px;
+			  margin-left: -353px;
+			  margin-top: 80px;
+			  color: #fff;
+			  background-color:  #FDB514; 
+			}
+
+			.btn:hover {
+			  color: #fff;
+			  background-color: #DF9821;
+			}
+
+			.btm {
+			  position: absolute;
+			  -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+			  -moz-appearance: none; /* Remove estilo padrão do FireFox */
+			  appearance: none; /* Remove estilo padrão do FireFox*/
+			  background-position: 40px center;  /*Posição da imagem do background*/
+   			  background-size: 5px; 
+			  width: 352px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+			  height: 55px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+			  border-radius: 40px;
+			  font-size: 20px;
+			  font-family: Roboto;
+			  margin-left: -353px;
+			  margin-top: 80px;
+			  color: #fff;
+			  background-color:  #FDB514; 
+			  outline: none;
+			}
+
+			.btm:hover {
+			  color: #fff;
+			  background-color: #DF9821;
+			}
+
+			.frase1 {
+			  text-align: center;
+			  font-family: 'Product Sans Medium Regular';
+			  font-style: normal;
+			  font-weight: normal;
+			  src: local('Product Sans Medium Regular'), url('ProductSans-Medium.woff') format('woff');
+			  width: 400px;
+			  font-size: 30px;
+			  color: #707070;
+			  margin-top: 20px;
+			  margin-left: 60px;
+			}
+
+			.frase2 {
+			  text-align: center;
+			  font-family: 'Product Sans Medium Regular';
+			  font-style: normal;
+			  font-weight: normal;
+			  src: local('Product Sans Medium Regular'), url('ProductSans-Medium.woff') format('woff');
+			  width: 400px;
+			  font-size: 20px;
+			  color: #707070;
+			  margin-left: 60px;
+			}
+
+			.frase2 b {
+			  color:#fdb513;
+			}
+
+			.imaa {
+			  position: absolute;
+			  bottom: 110px;
+			  left: 130px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="imagemm" >
+			<img src="img/foto.png" width="100%" height="100%">
+	    </div>
+		<div class="fundo">
+			<div class="caixa">
+				<div class="imagem">
+					<img src="img/pinglogo.png" width="106.9" height="106.9">
+				</div>
+
+				<div class="titulo1">
+					<h1>Olá, você está no CESAR SCHOOL</h1>
+				</div>
+
+				<div class="local">
+					<select id="pfvr">
+			  			<option value="S1">Auditório</option>
+			  			<option value="S2">Banheiro masculino (térreo)</option>
+			  			<option value="S3">Banheiro feminino (térreo)</option>
+			  			<option value="S4">Banheiro masculino (escadas-térreo)</option>
+			  			<option value="S5">Banheiro feminino (escadas-térreo)</option>
+			  			<option value="S6">Banheiro masculino (1º andar)</option>
+			  			<option value="S7">Banheiro feminino (1º andar)</option>
+			  			<option value="S8">Banheiro masculino (2º andar)</option>
+			  			<option value="S9">Banheiro feminino (2º andar)</option>
+			  			<option value="S10">Banheiro masculino (3º andar)</option>
+			  			<option value="S11">Banheiro feminino (3º andar)</option>
+			  			<option value="S12">Banheiro masculino (4º andar)</option>			  		
+			  			<option value="S13">Banheiro feminino (4º andar)</option>
+						<option value="S14">Banheiro acessibilidade (térreo)</option>			  
+			  			<option value="S15">Banheiro acessibilidade (2º andar)</option>
+			  			<option value="S16">Diretoria - Carol Salgado</option>
+			  			<option value="S17">Diretoria - Felipe Furtado</option>
+			  			<option value="S18">Secretaria</option>
+			  			<option value="S19">Impressora - Proj. Educacionais</option>
+			  			<option value="S20">Relógio de Ponto - (térreo)</option>
+			  			<option value="S21">Sala 1</option>
+			  			<option value="S22">Sala 2</option>
+			  			<option value="S23">Sala 3</option>
+			  			<option value="S24">Sala 4</option>
+			  			<option value="S25">Sala 5</option>
+			  			<option value="S26">Sala 6</option>
+			  			<option value="S27">Sala 7</option>
+			  			<option value="S28">Sala 8</option>
+		  		    </select>
+		  		    <!--<input type="submit" value="Entrar com sua conta CESAR" class="btm">-->
+					<a href="CESARSchool/S1.html" class="btn">Entrar com sua conta CESAR</a>
+				</div>
+			</div>		
+  		</div>
+	</body>
+</html>
+
+
+
+ 
