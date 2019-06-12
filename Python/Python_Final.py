@@ -20,7 +20,6 @@ bot = telebot.TeleBot('830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY', threaded=
 global respo
 number = 0
 
-
 def handle_messages(messages):
     global cheia
     global number
@@ -28,21 +27,22 @@ def handle_messages(messages):
     global lugar
     for message in messages:
         kin = str(message).split(',')
-        idmens = kin[1].split(': ')
-        prot = idmens[1]
-        print(prot)
         mens = kin[-1].split(': ')
         name = kin[4].split(': ')
         sup = name[1]
+        chama = kin[-2].split(': ')
+        nenem = chama[1].replace("'","")
+        nenem = nenem.replace(' quem vai resolver?}', '')
+        print(nenem)
         cheia = sup
-        if mens[1] == "'Eu vou'}}":
-            pedsup = sup + " vai resolver o chamado do(a) "+problema+" no(a) "+lugar
+        if mens[1] == "'Eu vou'}}" and nenem in form:
+            lun = nenem.replace(indv,'')
+            lun = lun.replace(' pediu ','')
+            pedsup = sup + " vai resolver o chamado do(a) "+ lun
             number = 2
             enviarEmail()
-            markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-            itembta = types.KeyboardButton('Feito')
-            markup.add(itembta)
-            bot.send_message(-1001225815995, pedsup, reply_markup=markup)
+            bot.send_message(-1001225815995, pedsup)
+            form.remove(nenem)
         if mens[1] == "'Feito'}}":
             relsup = sup + " resolveu o problema!"
             number = 1
@@ -103,7 +103,7 @@ carlos = 871256317
 will = 628657757
 
 strokes = []
-
+form = []
 _thread.start_new_thread(fazPoll, ())
 
 while True:
@@ -119,13 +119,11 @@ while True:
         res = res.replace(">", '')
         res = res.replace("\r", '')
         strokes.append(res)
-        print(strokes)
     if len(strokes) >= 3:
         timestamp = datetime.now()
         tempo = timestamp.strftime('%Y-%m-%d %H:%M:%S')
         crac = strokes[0]
         problema = strokes[1]+' '+strokes[2]
-        print(crac)
         identity = crac
         serial = problema
         data = {}
@@ -151,27 +149,23 @@ while True:
                 '29 0 9A 90 D5 ': 'Eduardo Eile', '29 0 9C 9C A0 ': 'Julio César', '29 0 95 F4 DC ': 'Maria Luísa Leitão', '29 0 95 F4 FC ': 'Milena Costa Leimig',
                 '29 0 9A 91 F4 ': 'Gabriel Soriano', '29 0 43 C1 EB ': 'Lucas Felinto', '29 0 9C 9E 1D ': 'Larissa Virginia',
                 '29 0 9C 9E 5E ': 'José Victor Macedo', '29 0 95 F4 F3 ': 'Matheus Dias', '29 0 95 F5 13 ': 'Nivaldo Neto'}
-        indv = ''
+        indv = 'Usuario'
         if crac in dicA:
             email = dicA[crac]
             indv = dicB[crac]
         else:
             email = 'kkk'
-        print(crac)
         lugar = 'Auditório'
         respo = problema + ' no(a) ' + lugar
-        pedido = indv + ' pediu '+problema + \
-            ' no(a) '+lugar+' quem vai resolver?'
         emailT = email+'@cesar.school'
-        print(emailT)
         cheia = ''
-
-        markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-        itembta = types.KeyboardButton('Eu vou')
-        markup.add(itembta)
-        bot.send_message(-1001225815995, pedido, reply_markup=markup)
+        ticket = indv + ' pediu ' + problema + ' no(a) '+ lugar
+        print(ticket)
+        form.append(ticket)
+        print(form)
+        pedido = ticket + ' quem vai resolver?'
+        bot.send_message(-1001225815995, pedido)
         del strokes[0]
         del strokes[0]
         del strokes[0]
         bot.set_update_listener(handle_messages)
-        print('sai do bot')
