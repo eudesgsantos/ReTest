@@ -6,7 +6,6 @@ import logging
 import smtplib
 import ssl
 import _thread
-import serial
 from telebot import types
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -14,6 +13,7 @@ from email.mime.multipart import MIMEMultipart
 DEBUG = True
 
 if(not DEBUG):
+    import serial
     Arduinoserial = serial.Serial('COM14')
 bot = telebot.TeleBot('830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY', threaded=True)
 
@@ -29,22 +29,27 @@ def handle_messages(messages):
         kin = str(message).split(',')
         mens = kin[-1].split(': ')
         name = kin[4].split(': ')
-        sup = name[1]
+        sup = name[1].replace("'","")
         chama = kin[-2].split(': ')
         nenem = chama[1].replace("'","")
         nenem = nenem.replace(' quem vai resolver?}', '')
-        print(nenem)
+        nenem = nenem.replace('"', '')
+        nenem = nenem.replace('}', '')
         cheia = sup
-        if mens[1] == "'Eu vou'}}" and nenem in form:
-            lun = nenem.replace(indv,'')
-            lun = lun.replace(' pediu ','')
+        lun = nenem.replace(indv,'')
+        lun = lun.replace(' pediu ','')
+        if mens[1] == "'Eu vou'}}" and nenem in formA:
+            formA.remove(nenem)
             pedsup = sup + " vai resolver o chamado do(a) "+ lun
+            formB.append(pedsup)
             number = 2
             enviarEmail()
             bot.send_message(-1001225815995, pedsup)
-            form.remove(nenem)
-        if mens[1] == "'Feito'}}":
-            relsup = sup + " resolveu o problema!"
+        if mens[1] == "'Feito'}}" and nenem in formB:
+            lun = lun.replace(sup,'')
+            lun = lun.replace(' vai resolver o chamado do(a) ','')
+            formB.remove(nenem)
+            relsup ="{} resolveu {}!".format(sup,lun)
             number = 1
             bot.send_message(-1001225815995, relsup)
             enviarEmail()
@@ -103,7 +108,8 @@ carlos = 871256317
 will = 628657757
 
 strokes = []
-form = []
+formA = []
+formB = []
 _thread.start_new_thread(fazPoll, ())
 
 while True:
@@ -160,9 +166,7 @@ while True:
         emailT = email+'@cesar.school'
         cheia = ''
         ticket = indv + ' pediu ' + problema + ' no(a) '+ lugar
-        print(ticket)
-        form.append(ticket)
-        print(form)
+        formA.append(ticket)
         pedido = ticket + ' quem vai resolver?'
         bot.send_message(-1001225815995, pedido)
         del strokes[0]
