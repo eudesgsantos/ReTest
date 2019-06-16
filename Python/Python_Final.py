@@ -10,7 +10,7 @@ from telebot import types
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-DEBUG = True
+DEBUG = False
 
 if(not DEBUG):
     import serial
