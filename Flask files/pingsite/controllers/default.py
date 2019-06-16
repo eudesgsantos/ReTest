@@ -1,5 +1,6 @@
-from app import app
 from flask import Flask, flash, redirect, render_template, request, session, abort
+from pingsite import app
+from pingsite.models import models
 
 @app.route("/")
 def home():
