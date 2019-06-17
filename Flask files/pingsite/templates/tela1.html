@@ -87,7 +87,7 @@
 			  font-size: 20px;
 			  font-family: Roboto;
 			  padding: 15px 10px 10px 50px;
-			  margin-left: -353px;
+			  margin-left: 40px;
 			  margin-top: 80px;
 			  color: #fff;
 			  background-color:  #FDB514; 
@@ -147,44 +147,29 @@
 				<div class="titulo1">
 					<h1>Olá, você está no CESAR SCHOOL</h1>
 				</div>
+				{% block content %}
+				<div class="conteudo">
+					<form method="POST" action"">
+						{{ form.hidden_tag() }}
+						<fieldset>
 
-				<div class="local">
-					<select id="pfvr">
-			  			<option value="1">Auditório</option>
-			  			<option value="2">Banheiro masculino (térreo)</option>
-			  			<option value="3">Banheiro feminino (térreo)</option>
-			  			<option value="4">Banheiro masculino (escadas-térreo)</option>
-			  			<option value="5">Banheiro feminino (escadas-térreo)</option>
-			  			<option value="6">Banheiro masculino (1º andar)</option>
-			  			<option value="7">Banheiro feminino (1º andar)</option>
-			  			<option value="8">Banheiro masculino (2º andar)</option>
-			  			<option value="9">Banheiro feminino (2º andar)</option>
-			  			<option value="10">Banheiro masculino (3º andar)</option>
-			  			<option value="11">Banheiro feminino (3º andar)</option>
-			  			<option value="12">Banheiro masculino (4º andar)</option>			  		
-			  			<option value="13">Banheiro feminino (4º andar)</option>
-						<option value="14">Banheiro acessibilidade (térreo)</option>			  
-			  			<option value="15">Banheiro acessibilidade (2º andar)</option>
-			  			<option value="16">Diretoria - Carol Salgado</option>
-			  			<option value="17">Diretoria - Felipe Furtado</option>
-			  			<option value="18">Impressora Color - Secretaria</option>
-			  			<option value="19">Impressora P&B - Secretaria</option>
-			  			<option value="20">Impressora - Proj. Educacionais</option>
-			  			<option value="21">Relógio de Ponto - Corredor (térreo)</option>
-			  			<option value="22">Sala 1</option>
-			  			<option value="23">Sala 2</option>
-			  			<option value="24">Sala 3</option>
-			  			<option value="25">Sala 4</option>
-			  			<option value="26">Sala 5</option>
-			  			<option value="27">Sala 6</option>
-			  			<option value="28">Sala 7</option>
-			  			<option value="29">Sala 8</option>
-		  		    </select>
-
-					<a href="tela2.html" class="btn">Entrar com sua conta CESAR</a>
+							<div>
+								
+								{{ form.lugarF(class="local", id="pfvr") }}
+							</div>
+						</fieldset>
+						
+					</form>
+				</div>
+				
+					<a href={{ url_for('seg') }}>
+						
+						{{ form.submit(class="btn") }}
+					</a>
 				</div>
 			</div>		
-  		</div>
+		  </div>
+		  {% endblock content %}
 	</body>
 </html>
 

@@ -1,12 +1,14 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort
 from pingsite import app
 from pingsite.models import models
+from pingsite.Forms import Lugarform
 
 @app.route("/")
 def home():
-    return render_template('tela1.html')
+    form = Lugarform()
+    return render_template('tela1.html',form=form)
 
-@app.route("/tela2.html")
+@app.route("/problema")
 def seg():
     return render_template('tela2.html')
 
