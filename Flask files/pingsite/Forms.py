@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, SubmitField
-
+from wtforms import SelectField, SubmitField, StringField
+from wtforms.validators import DataRequired, length, Email
 class Lugarform(FlaskForm):
     lugarF = SelectField('Lugar: ', choices=[
         ('01','Auditório'),('02','Banheiro masculino (térreo)'),('03','Banheiro feminino (térreo)'),
@@ -15,3 +15,23 @@ class Lugarform(FlaskForm):
         ('21','Relógio de Ponto - Corredor (térreo)'),('21','Sala 1'),('22','Sala 2'),('23','Sala 3'),
         ('24','Sala 4'),('25','Sala 5'),('26','Sala 6'),('27','Sala 7'),('28','Sala 8')])
     submit = SubmitField('Entrar com sua conta CESAR')
+
+class Loginform(FlaskForm):
+    nomeF = StringField('Username',
+                          validators=[DataRequired()])
+    email = StringField('Email',
+                          validators=[DataRequired(),])                            
+
+    sing = SubmitField('Confirmar')
+
+    hole = SelectField('buraco', choices=[('B1','@cesar.School'),('B2','@cesar.org.br')])
+
+class ProblemasForm(FlaskForm):
+    problemas=SelectField('Problemas:', choices=[
+        ('A0','Projetor'),('A1','Ar condicionado não funciona corretamente'),('A2','Cadeira quebrada'),
+        ('A3','Caixa de som não funciona'),('A4','Lâmpada apagada ou piscando'),('A5','Microfone não funciona'),
+        ('A6','Porta com defeito'),('A7','Preciso de um adaptador ou cabo'),('A8','Projetor não funciona'),
+        ('A9','Rede cabeada não funciona'),('A10','Rede wifi não funciona'),('A11','TV não funciona'),
+        ('A12','Outros')])
+    extra = StringField ('Comentario')
+    botao =  SubmitField('Reportar')
