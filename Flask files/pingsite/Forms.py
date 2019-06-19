@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField, StringField
-from wtforms.validators import DataRequired, length, Email
+from wtforms.validators import DataRequired, Length
+
 class Lugarform(FlaskForm):
     lugarF = SelectField('Lugar: ', choices=[
         ('01','Auditório'),('02','Banheiro masculino (térreo)'),('03','Banheiro feminino (térreo)'),
@@ -17,15 +18,9 @@ class Lugarform(FlaskForm):
     submit = SubmitField('Entrar com sua conta CESAR')
 
 class Loginform(FlaskForm):
-    nomeF = StringField('Username',
-                          validators=[DataRequired()])
-    email = StringField('Email',
-                          validators=[DataRequired(),])                            
-
-    sing = SubmitField('Confirmar')
-
-    hole = SelectField('buraco', choices=[('B1','@cesar.School'),('B2','@cesar.org.br')])
-
+    nomeF = StringField('Username',validators=[DataRequired(), Length(min=2, max=20)])
+    hole = SelectField('buraco', choices=[('B1','@cesar.school'),('B2','@cesar.org.br')])
+    submit = SubmitField('Confirmar')
 class ProblemasForm(FlaskForm):
     problemas=SelectField('Problemas:', choices=[
         ('A0','Projetor'),('A1','Ar condicionado não funciona corretamente'),('A2','Cadeira quebrada'),

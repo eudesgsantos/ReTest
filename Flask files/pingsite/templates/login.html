@@ -87,8 +87,8 @@
         font-size: 20px;
         font-family: Roboto;
         padding: 15px 10px 10px 50px;
-        margin-left: 40px;
-        margin-top: 40px;
+        margin-left: -350px;
+        margin-top: 90px;
         color: #fff;
         background-color:  #FDB514; 
       }
@@ -154,22 +154,18 @@
             <fieldset>
 
               <div>
-                
+                {{ form.csrf_token }}
+
                 {{ form.nomeF(class="local", id="pfvr") }}
                 {{form.hole(class="local", id="pfvr")}}
+                {{ form.submit(class="btn") }}
               </div>
             </fieldset>
             
           </form>
         </div>
-        
-          <a href={{ url_for('seg') }}>
-            
-            {{ form.sing(class="btn") }}
-          </a>
-        </div>
-      </div>    
       </div>
-      {% endblock content %}
+    </div>
+            {% endblock content %}
   </body>
 </html>
