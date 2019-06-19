@@ -87,8 +87,8 @@
 			  font-size: 20px;
 			  font-family: Roboto;
 			  padding: 15px 10px 10px 50px;
-			  margin-left: 40px;
-			  margin-top: 80px;
+			  margin-left: -350px;
+			  margin-top: 70px;
 			  color: #fff;
 			  background-color:  #FDB514; 
 			}
@@ -145,7 +145,7 @@
 				</div>
 
 				<div class="titulo1">
-					<h1>Olá, você está no CESAR SCHOOL</h1>
+					<h1>Olá, escolha o local, o problema e especifique caso queira</h1>
 				</div>
 				{% block content %}
 				<div class="conteudo">
@@ -156,16 +156,14 @@
 							<div>
 								
 								{{ form.lugarF(class="local", id="pfvr") }}
+								{{ form.problemas(class="local", id="pfvr") }}
+								{{ form.extra(class="local", id="pfvr") }}
+								{{ form.submit(class="btn") }}
 							</div>
 						</fieldset>
 						
 					</form>
 				</div>
-				
-					<a href={{ url_for('login') }}>
-						
-						{{ form.submit(class="btn") }}
-					</a>
 				</div>
 			</div>		
 		  </div>
