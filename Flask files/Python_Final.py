@@ -6,18 +6,21 @@ import logging
 import smtplib
 import ssl
 import _thread
+from pingsite import app
 from telebot import types
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pingsite.controllers.default import login, home
+from pingsite.controllers import default
+
+confi01 = 1
+confi02 = 1
 
 DEBUG = False
-confi01 = 0
-confi02 = 0
-
-if(not DEBUG):
+"""if(not DEBUG):
     import serial
     Arduinoserial = serial.Serial('COM14')
+"""
 bot = telebot.TeleBot('830353241:AAE3P5ciHJf_VmGflxJw7kCWiJ3r8EAxGxY', threaded=True)
 
 global respo
@@ -117,7 +120,8 @@ while True:
         strokes.append(ema)
         strokes.append(realprob)
         strokes.append(place)
-    else:
+        print('entrou')
+    """else:
         if(DEBUG):
             res = input("digita ai: ")
         else:
@@ -130,6 +134,7 @@ while True:
             res = res.replace(">", '')
             res = res.replace("\r", '')
             strokes.append(res)
+"""
     if len(strokes) >= 3:
         timestamp = datetime.now()
         tempo = timestamp.strftime('%Y-%m-%d %H:%M:%S')
