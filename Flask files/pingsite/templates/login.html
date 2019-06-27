@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta charset="utf-8">
     <title>P!NG</title>
@@ -131,6 +132,26 @@
         bottom: 110px;
         left: 130px;
       }
+      .pfvr2 {
+        -webkit-appearance: none;  /* Remove estilo padrão do Chrome */
+        -moz-appearance: none; /* Remove estilo padrão do FireFox */
+        appearance: none; /* Remove estilo padrão do FireFox*/
+        
+        width: 452px; /* Tamanho do select, maior que o tamanho da div "div-select" */
+        height:55px; /* Altura do select, importante para que tenha a mesma altura em todo os navegadores */
+        background: url(img/seta-para-baixo.png) no-repeat 300px;  /* Imagem de fundo (Seta) */
+        border-radius: 10px;
+        font-size: 24px;
+        font-family: Roboto;
+        padding: 10px 20px 10px 20px;
+        border: solid 2.5px #ee6e6e;
+        color: rgba(24, 22, 22, 0.877);
+        margin-left: 0px;
+        margin-top: 118px;
+        text-align: center;
+        background-color: #ee6e6e;
+      }
+
     </style>
   </head>
 
@@ -147,6 +168,7 @@
         <div class="titulo1">
           <h1>Entre com seu email Cesar!</h1>
         </div>
+
         {% block content %}
         <div class="conteudo">
           <form method="POST" action"">
@@ -164,8 +186,20 @@
             
           </form>
         </div>
+
+    {% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for category, message in messages %}
+        <li class="pfvr2">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
       </div>
     </div>
             {% endblock content %}
+
   </body>
 </html>
